@@ -1,5 +1,6 @@
 import 'package:app3project/Accelerometer.dart';
 import 'package:app3project/Barometer.dart';
+import 'package:app3project/Compass.dart';
 import 'package:app3project/Magnetometer.dart';
 import 'package:app3project/Map.dart';
 import 'package:app3project/Proximity.dart';
@@ -15,12 +16,10 @@ late List<CameraDescription> _cameras;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  try{
+  try {
     _cameras = await availableCameras();
-  }catch(e){
+  } catch (e) {}
 
-  }
-  
   runApp(const MyApp());
 }
 
@@ -468,6 +467,42 @@ class _FirstPageState extends State<FirstPage> {
                   Flexible(
                     child: AspectRatio(
                       aspectRatio: 1,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:
+                              const Color.fromARGB(255, 47, 47, 47),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          side: const BorderSide(
+                            color: Color.fromARGB(255, 44, 176, 39),
+                            width: 2,
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CompassScreen()),
+                          );
+                        },
+                        child: const Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(Icons.compare_arrows_sharp,
+                                color: Colors.white), // Accelerometer icon
+                            SizedBox(
+                                height: 10), // Spacing between icon and text
+                            Text(
+                              'Compass',
+                              style: TextStyle(
+                                color: Color.fromARGB(255, 199, 199, 199),
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ],
