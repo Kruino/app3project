@@ -65,7 +65,7 @@ class _CompassScreenState extends State<CompassScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Text('Compass App'),
+        title: const Text('Compass'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
